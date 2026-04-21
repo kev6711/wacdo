@@ -24,6 +24,7 @@ app.use("/uploads", express.static("uploads"));
 
 app.use("/wacdo/users", require("./routes/users.routes"));
 app.use("/wacdo/products", require("./routes/products.routes"));
+app.use("/wacdo/menus", require("./routes/menus.routes"));
 
 const startServer = async () => {
     try {
