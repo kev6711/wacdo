@@ -13,8 +13,7 @@ exports.login = async (req, res) => {
 
     try {
         const { email, password } = req.body;
-        if (!email || !password)
-            return res.status(400).json({ error: "Email et mot de passe obligatoire" });
+        if (!email || !password) return res.status(400).json({ error: "Email et mot de passe obligatoire" });
 
         const existingUser = await User.findOne({ email });
         if (!existingUser) return res.status(401).json({ message: "Identifiants invalides" });
@@ -42,19 +41,17 @@ exports.createUser = async (req, res) => {
     }
     try {
         const { name, email, password, role } = req.body;
-        if (!email || !password)
-            return res.status(400).json({ error: "Email et mot de passe obligatoire" });
+        if (!email || !password) return res.status(400).json({ error: "Email et mot de passe obligatoire" });
 
         const schema = new passwordValidator();
         schema.is().min(8).has().uppercase().has().digits();
         if (!schema.validate(password))
             return res.status(400).json({
-                message:
-                    "Le mot de passe doit contenir au moins 8 caractères, 1 majuscule et 1 chiffre",
+                message: "Le mot de passe doit contenir au moins 8 caractères, 1 majuscule et 1 chiffre",
             });
 
         const existingUser = await User.findOne({ email });
-        if (existingUser) return res.status(400).json({ message: "Compte déjà existant" });
+        if (existingUser) return res.status(400).json({ error: "Compte déjà existant" });
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -86,8 +83,7 @@ exports.getUsers = async (req, res) => {
 exports.getUser = async (req, res) => {
     try {
         const id = req.params.id;
-        if (!mongoose.Types.ObjectId.isValid(id))
-            return res.status(400).json({ error: "ID invalide" });
+        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).json({ error: "ID invalide" });
 
         const user = await User.findById(id);
         if (!user) return res.status(404).json({ error: "Utilisateur introuvable" });
@@ -107,8 +103,7 @@ exports.updateUser = async (req, res) => {
     }
     try {
         const { id } = req.params;
-        if (!mongoose.Types.ObjectId.isValid(id))
-            return res.status(400).json({ error: "ID invalide" });
+        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).json({ error: "ID invalide" });
 
         const { name, email, password, role } = req.body;
 
@@ -120,7 +115,7 @@ exports.updateUser = async (req, res) => {
             const existingUser = await User.findOne({ email });
             // On contrôle si l'email est déjà attribué à un autre utilisateur sans bloquer le cas où l'email correspond à l'utilisateur qui effectue la requête de modification
             if (existingUser && !existingUser._id.equals(id))
-                return res.status(400).json({ message: "Compte déjà existant" });
+                return res.status(400).json({ error: "Compte déjà existant" });
 
             user.email = email;
         }
@@ -129,8 +124,7 @@ exports.updateUser = async (req, res) => {
             schema.is().min(8).has().uppercase().has().digits();
             if (!schema.validate(password))
                 return res.status(400).json({
-                    message:
-                        "Le mot de passe doit contenir au moins 8 caractères, 1 majuscule et 1 chiffre",
+                    message: "Le mot de passe doit contenir au moins 8 caractères, 1 majuscule et 1 chiffre",
                 });
 
             const hashedPassword = await bcrypt.hash(password, 10);
@@ -148,14 +142,13 @@ exports.updateUser = async (req, res) => {
 exports.deleteUser = async (req, res) => {
     try {
         const { id } = req.params;
-        if (!mongoose.Types.ObjectId.isValid(id))
-            return res.status(400).json({ error: "ID invalide" });
+        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(400).json({ error: "ID invalide" });
 
         const user = await User.findById(id);
         if (!user) return res.status(404).json({ error: "Utilisateur introuvable" });
 
         await user.deleteOne();
-        res.json({ message: "Utilisateur supprimé avec succès" });
+        res.status(200).json({ message: "Utilisateur supprimé avec succès" });
     } catch (error) {
         res.status(500).json({ error: "Erreur lors de la suppression de l'utilisateur" });
     }
