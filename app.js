@@ -4,6 +4,7 @@ const cors = require("cors");
 const rateLimit = require("express-rate-limit");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
+const setupSwagger = require("./swagger");
 
 dotenv.config();
 
@@ -26,6 +27,8 @@ app.use("/wacdo/users", require("./routes/users.routes"));
 app.use("/wacdo/products", require("./routes/products.routes"));
 app.use("/wacdo/menus", require("./routes/menus.routes"));
 app.use("/wacdo/orders", require("./routes/orders.routes"));
+
+setupSwagger(app);
 
 const startServer = async () => {
     try {
