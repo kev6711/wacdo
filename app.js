@@ -30,13 +30,4 @@ app.use("/wacdo/orders", require("./routes/orders.routes"));
 
 setupSwagger(app);
 
-const startServer = async () => {
-    try {
-        await connectDB();
-        app.listen(PORT, () => console.log(`Server running on ${PORT}`));
-    } catch (error) {
-        console.error("Failed to start server:", error.message);
-    }
-};
-
-startServer();
+module.exports = app;
