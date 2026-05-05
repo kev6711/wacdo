@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1777979770166" clover="3.2.0">
-  <project timestamp="1777979770166" name="All files">
-    <metrics statements="477" coveredstatements="352" conditionals="239" coveredconditionals="120" methods="32" coveredmethods="21" elements="748" coveredelements="493" complexity="0" loc="477" ncloc="477" packages="6" files="18" classes="18"/>
+<coverage generated="1777985661259" clover="3.2.0">
+  <project timestamp="1777985661259" name="All files">
+    <metrics statements="477" coveredstatements="376" conditionals="239" coveredconditionals="126" methods="32" coveredmethods="26" elements="748" coveredelements="528" complexity="0" loc="477" ncloc="477" packages="6" files="18" classes="18"/>
     <package name="wacdo_backend">
       <metrics statements="28" coveredstatements="28" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
       <file name="app.js" path="C:\Users\kevin\OneDrive\Documents\Formation Développement Web\interskills\workshop\developpement_backend_node_js\projet_wacdo\wacdo_backend\app.js">
@@ -56,26 +56,26 @@
       </file>
     </package>
     <package name="wacdo_backend.controllers">
-      <metrics statements="342" coveredstatements="231" conditionals="227" coveredconditionals="112" methods="23" coveredmethods="16"/>
+      <metrics statements="342" coveredstatements="255" conditionals="227" coveredconditionals="118" methods="23" coveredmethods="21"/>
       <file name="menus.controller.js" path="C:\Users\kevin\OneDrive\Documents\Formation Développement Web\interskills\workshop\developpement_backend_node_js\projet_wacdo\wacdo_backend\controllers\menus.controller.js">
-        <metrics statements="80" coveredstatements="50" conditionals="60" coveredconditionals="25" methods="5" coveredmethods="3"/>
+        <metrics statements="80" coveredstatements="59" conditionals="60" coveredconditionals="27" methods="5" coveredmethods="5"/>
         <line num="1" count="5" type="stmt"/>
         <line num="2" count="5" type="stmt"/>
         <line num="3" count="5" type="stmt"/>
         <line num="4" count="5" type="stmt"/>
         <line num="5" count="5" type="stmt"/>
         <line num="7" count="5" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
         <line num="18" count="5" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
-        <line num="20" count="0" type="stmt"/>
-        <line num="21" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="24" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="26" count="0" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="26" count="1" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
         <line num="34" count="5" type="stmt"/>
         <line num="35" count="3" type="stmt"/>
@@ -243,15 +243,15 @@
         <line num="205" count="0" type="stmt"/>
       </file>
       <file name="products.controller.js" path="C:\Users\kevin\OneDrive\Documents\Formation Développement Web\interskills\workshop\developpement_backend_node_js\projet_wacdo\wacdo_backend\controllers\products.controller.js">
-        <metrics statements="76" coveredstatements="52" conditionals="49" coveredconditionals="23" methods="6" coveredmethods="4"/>
+        <metrics statements="76" coveredstatements="61" conditionals="49" coveredconditionals="25" methods="6" coveredmethods="6"/>
         <line num="1" count="5" type="stmt"/>
         <line num="2" count="5" type="stmt"/>
         <line num="3" count="5" type="stmt"/>
         <line num="4" count="5" type="stmt"/>
         <line num="6" count="5" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
         <line num="17" count="5" type="stmt"/>
         <line num="18" count="2" type="stmt"/>
@@ -262,12 +262,12 @@
         <line num="26" count="1" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
         <line num="34" count="5" type="stmt"/>
-        <line num="35" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="37" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="39" count="0" type="stmt"/>
-        <line num="40" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="42" count="0" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="37" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="42" count="1" type="stmt"/>
         <line num="44" count="0" type="stmt"/>
         <line num="50" count="5" type="stmt"/>
         <line num="51" count="2" type="stmt"/>
@@ -322,7 +322,7 @@
         <line num="138" count="0" type="stmt"/>
       </file>
       <file name="users.controller.js" path="C:\Users\kevin\OneDrive\Documents\Formation Développement Web\interskills\workshop\developpement_backend_node_js\projet_wacdo\wacdo_backend\controllers\users.controller.js">
-        <metrics statements="87" coveredstatements="63" conditionals="48" coveredconditionals="27" methods="6" coveredmethods="5"/>
+        <metrics statements="87" coveredstatements="69" conditionals="48" coveredconditionals="29" methods="6" coveredmethods="6"/>
         <line num="1" count="5" type="stmt"/>
         <line num="2" count="5" type="stmt"/>
         <line num="3" count="5" type="stmt"/>
@@ -367,12 +367,12 @@
         <line num="75" count="1" type="stmt"/>
         <line num="77" count="0" type="stmt"/>
         <line num="83" count="5" type="stmt"/>
-        <line num="84" count="0" type="stmt"/>
-        <line num="85" count="0" type="stmt"/>
-        <line num="86" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="88" count="0" type="stmt"/>
-        <line num="89" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="91" count="0" type="stmt"/>
+        <line num="84" count="1" type="stmt"/>
+        <line num="85" count="1" type="stmt"/>
+        <line num="86" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="88" count="1" type="stmt"/>
+        <line num="89" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="91" count="1" type="stmt"/>
         <line num="93" count="0" type="stmt"/>
         <line num="99" count="5" type="stmt"/>
         <line num="100" count="1" type="stmt"/>
@@ -418,14 +418,14 @@
         <metrics statements="12" coveredstatements="11" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
         <line num="1" count="5" type="stmt"/>
         <line num="3" count="5" type="stmt"/>
-        <line num="4" count="29" type="stmt"/>
-        <line num="5" count="29" type="stmt"/>
-        <line num="6" count="29" type="cond" truecount="4" falsecount="0"/>
+        <line num="4" count="37" type="stmt"/>
+        <line num="5" count="37" type="stmt"/>
+        <line num="6" count="37" type="cond" truecount="4" falsecount="0"/>
         <line num="7" count="4" type="stmt"/>
-        <line num="9" count="25" type="stmt"/>
-        <line num="11" count="25" type="stmt"/>
-        <line num="12" count="25" type="stmt"/>
-        <line num="13" count="25" type="stmt"/>
+        <line num="9" count="33" type="stmt"/>
+        <line num="11" count="33" type="stmt"/>
+        <line num="12" count="33" type="stmt"/>
+        <line num="13" count="33" type="stmt"/>
         <line num="15" count="0" type="stmt"/>
         <line num="19" count="5" type="stmt"/>
       </file>
@@ -450,9 +450,9 @@
         <metrics statements="6" coveredstatements="6" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="1" count="5" type="stmt"/>
         <line num="2" count="90" type="stmt"/>
-        <line num="3" count="21" type="cond" truecount="2" falsecount="0"/>
-        <line num="4" count="1" type="stmt"/>
-        <line num="7" count="20" type="stmt"/>
+        <line num="3" count="29" type="cond" truecount="2" falsecount="0"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="7" count="25" type="stmt"/>
         <line num="11" count="5" type="stmt"/>
       </file>
     </package>
@@ -481,9 +481,9 @@
         <line num="1" count="5" type="stmt"/>
         <line num="3" count="5" type="stmt"/>
         <line num="18" count="5" type="stmt"/>
-        <line num="19" count="4" type="stmt"/>
-        <line num="20" count="4" type="stmt"/>
-        <line num="21" count="4" type="stmt"/>
+        <line num="19" count="5" type="stmt"/>
+        <line num="20" count="5" type="stmt"/>
+        <line num="21" count="5" type="stmt"/>
         <line num="24" count="5" type="stmt"/>
       </file>
     </package>
@@ -498,11 +498,11 @@
         <line num="5" count="5" type="stmt"/>
         <line num="6" count="5" type="stmt"/>
         <line num="94" count="5" type="stmt"/>
-        <line num="129" count="5" type="stmt"/>
-        <line num="162" count="5" type="stmt"/>
-        <line num="199" count="5" type="stmt"/>
-        <line num="230" count="5" type="stmt"/>
-        <line num="232" count="5" type="stmt"/>
+        <line num="130" count="5" type="stmt"/>
+        <line num="163" count="5" type="stmt"/>
+        <line num="200" count="5" type="stmt"/>
+        <line num="231" count="5" type="stmt"/>
+        <line num="233" count="5" type="stmt"/>
       </file>
       <file name="orders.routes.js" path="C:\Users\kevin\OneDrive\Documents\Formation Développement Web\interskills\workshop\developpement_backend_node_js\projet_wacdo\wacdo_backend\routes\orders.routes.js">
         <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>

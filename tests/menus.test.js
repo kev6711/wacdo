@@ -58,6 +58,45 @@ describe("Menus routes", () => {
         expect(res.statusCode).toBe(401);
     });
 
+    it("should get menus if user is reception", async () => {
+        const product = await Product.create({
+            name: "Big Wac",
+            category: "burger",
+            price: 9.99,
+        });
+
+        await Menu.create({
+            name: "Menu Big Wac",
+            products: [product._id],
+            price: 12.9,
+        });
+
+        const res = await request(app).get("/wacdo/menus").set("Authorization", `Bearer ${receptionToken}`);
+
+        expect(res.statusCode).toBe(200);
+        expect(res.body).toHaveLength(1);
+    });
+
+    it("should get a menu by id if user is admin", async () => {
+        const product = await Product.create({
+            name: "Big Wac",
+            category: "burger",
+            price: 9.99,
+        });
+
+        const menu = await Menu.create({
+            name: "Menu Big Wac",
+            products: [product._id],
+            price: 12.9,
+        });
+
+        const res = await request(app).get(`/wacdo/menus/${menu._id}`).set("Authorization", `Bearer ${adminToken}`);
+
+        expect(res.statusCode).toBe(200);
+        expect(res.body.name).toBe("Menu Big Wac");
+        expect(res.body.products.length).toBe(1);
+    });
+
     it("should create a menu if user is admin", async () => {
         const product = await Product.create({
             name: "Big Wac",
@@ -78,6 +117,23 @@ describe("Menus routes", () => {
         expect(res.body.name).toBe("Menu Big Wac");
         expect(res.body.products).toContain(product._id.toString());
         expect(res.body.price).toBe(12.9);
+    });
+
+    it("should return 403 if reception tries to create a menu", async () => {
+        const product = await Product.create({
+            name: "Big Wac",
+            category: "burger",
+            price: 9.99,
+        });
+
+        const res = await request(app)
+            .post("/wacdo/menus")
+            .set("Authorization", `Bearer ${receptionToken}`)
+            .field("name", "Menu Big Wac")
+            .field("products[]", product._id.toString())
+            .field("price", "12.9");
+
+        expect(res.statusCode).toBe(403);
     });
 
     it("should return 400 if required fields are missing", async () => {

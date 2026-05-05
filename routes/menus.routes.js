@@ -71,7 +71,7 @@ const router = express.Router();
  * /wacdo/menus:
  *   get:
  *     summary: Récupérer tous les menus
- *     description: Retourne la liste des menus avec les produits associés. Route réservée aux administrateurs.
+ *     description: Retourne la liste des menus avec les produits associés. Route réservée aux administrateurs et à la réception.
  *     tags: [Menus]
  *     security:
  *       - bearerAuth: []
@@ -91,13 +91,14 @@ const router = express.Router();
  *       500:
  *         description: Erreur serveur
  */
-router.get("/", auth, authorizeRoles("admin"), getMenus);
+router.get("/", auth, authorizeRoles("admin", "reception"), getMenus);
 
 /**
  * @swagger
  * /wacdo/menus/{id}:
  *   get:
  *     summary: Récupérer un menu par ID
+ *     description: Retourne le détail d'un menu. Route réservée aux administrateurs et à la réception.
  *     tags: [Menus]
  *     security:
  *       - bearerAuth: []
@@ -126,14 +127,14 @@ router.get("/", auth, authorizeRoles("admin"), getMenus);
  *       500:
  *         description: Erreur serveur
  */
-router.get("/:id", auth, authorizeRoles("admin"), getMenu);
+router.get("/:id", auth, authorizeRoles("admin", "reception"), getMenu);
 
 /**
  * @swagger
  * /wacdo/menus:
  *   post:
  *     summary: Créer un menu
- *     description: Crée un menu avec une liste de produits et une image optionnelle.
+ *     description: Crée un menu avec une liste de produits et une image optionnelle. Route réservée aux administrateurs.
  *     tags: [Menus]
  *     security:
  *       - bearerAuth: []
@@ -166,7 +167,7 @@ router.post("/", auth, authorizeRoles("admin"), upload.single("image"), createMe
  * /wacdo/menus/{id}:
  *   put:
  *     summary: Modifier un menu
- *     description: Modifie un menu existant. Si une nouvelle image est envoyée, l'ancienne est supprimée.
+ *     description: Modifie un menu existant. Si une nouvelle image est envoyée, l'ancienne est supprimée. Route réservée aux administrateurs.
  *     tags: [Menus]
  *     security:
  *       - bearerAuth: []
@@ -203,7 +204,7 @@ router.put("/:id", auth, authorizeRoles("admin"), upload.single("image"), update
  * /wacdo/menus/{id}:
  *   delete:
  *     summary: Supprimer un menu
- *     description: Supprime un menu et son image associée.
+ *     description: Supprime un menu et son image associée. Route réservée aux administrateurs.
  *     tags: [Menus]
  *     security:
  *       - bearerAuth: []

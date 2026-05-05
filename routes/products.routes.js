@@ -76,7 +76,7 @@ const router = express.Router();
  * /wacdo/products:
  *   get:
  *     summary: Récupérer tous les produits
- *     description: Retourne la liste des produits triés du plus récent au plus ancien. Route réservée aux administrateurs.
+ *     description: Retourne la liste des produits triés du plus récent au plus ancien. Route réservée aux administrateurs et à la réception.
  *     tags: [Products]
  *     security:
  *       - bearerAuth: []
@@ -96,14 +96,14 @@ const router = express.Router();
  *       500:
  *         description: Erreur serveur
  */
-router.get("/", auth, authorizeRoles("admin"), getProducts);
+router.get("/", auth, authorizeRoles("admin", "reception"), getProducts);
 
 /**
  * @swagger
  * /wacdo/products/category/{category}:
  *   get:
  *     summary: Récupérer les produits par catégorie
- *     description: Retourne la liste des produits correspondant à une catégorie donnée. Retourne une erreur si aucun produit n'est trouvé. Route réservée aux administrateurs.
+ *     description: Retourne la liste des produits correspondant à une catégorie donnée. Retourne une erreur si aucun produit n'est trouvé. Route réservée aux administrateurs et à la réception.
  *     tags: [Products]
  *     security:
  *       - bearerAuth: []
@@ -134,14 +134,14 @@ router.get("/", auth, authorizeRoles("admin"), getProducts);
  *         description: Erreur serveur
  */
 
-router.get("/category/:category", auth, authorizeRoles("admin"), getProductsByCategory);
+router.get("/category/:category", auth, authorizeRoles("admin", "reception"), getProductsByCategory);
 
 /**
  * @swagger
  * /wacdo/products/{id}:
  *   get:
  *     summary: Récupérer un produit par ID
- *     description: Retourne le détail d'un produit. Route réservée aux administrateurs.
+ *     description: Retourne le détail d'un produit. Route réservée aux administrateurs et à la réception.
  *     tags: [Products]
  *     security:
  *       - bearerAuth: []
@@ -170,7 +170,7 @@ router.get("/category/:category", auth, authorizeRoles("admin"), getProductsByCa
  *       500:
  *         description: Erreur serveur
  */
-router.get("/:id", auth, authorizeRoles("admin"), getProduct);
+router.get("/:id", auth, authorizeRoles("admin", "reception"), getProduct);
 
 /**
  * @swagger

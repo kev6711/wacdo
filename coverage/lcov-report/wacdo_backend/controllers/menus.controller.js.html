@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">55.31% </span>
+                <span class="strong">64.89% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>52/94</span>
+                <span class='fraction'>61/94</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">41.66% </span>
+                <span class="strong">45% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>25/60</span>
+                <span class='fraction'>27/60</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>3/5</span>
+                <span class='fraction'>5/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">62.5% </span>
+                <span class="strong">73.75% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>50/80</span>
+                <span class='fraction'>59/80</span>
             </div>
         
             
@@ -216,9 +216,9 @@
 <span class="cline-any cline-yes">5x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -227,14 +227,14 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">5x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -361,10 +361,10 @@ const mongoose = require("mongoose");
 const fs = require("fs");
 const path = require("path");
 &nbsp;
-exports.getMenus = <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >    try {</span>
-        const menus = <span class="cstat-no" title="statement not covered" >await Menu.find().populate("products", "name image availability price").sort({ createdAt: -1 });</span>
-<span class="cstat-no" title="statement not covered" >        res.status(200).json(menus);</span>
+exports.getMenus = async (req, res) =&gt; {
+    try {
+        const menus = await Menu.find().populate("products", "name image availability price").sort({ createdAt: -1 });
+        res.status(200).json(menus);
     } catch (error) {
 <span class="cstat-no" title="statement not covered" >        res.status(500).json({</span>
             error: "Erreur lors de la récupération des menus",
@@ -372,15 +372,15 @@ exports.getMenus = <span class="fstat-no" title="function not covered" >as</span
     }
 };
 &nbsp;
-exports.getMenu = <span class="fstat-no" title="function not covered" >as</span>ync (req, res) =&gt; {
-<span class="cstat-no" title="statement not covered" >    try {</span>
-        const id = <span class="cstat-no" title="statement not covered" >req.params.id;</span>
-<span class="cstat-no" title="statement not covered" >        if (!mongoose.Types.ObjectId.isValid(id)) <span class="cstat-no" title="statement not covered" >return res.status(400).json({ error: "ID invalide" });</span></span>
+exports.getMenu = async (req, res) =&gt; {
+    try {
+        const id = req.params.id;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!mongoose.Types.ObjectId.isValid(id)) <span class="cstat-no" title="statement not covered" >return res.status(400).json({ error: "ID invalide" });</span>
 &nbsp;
-        const menu = <span class="cstat-no" title="statement not covered" >await Menu.findById(id).populate("products", "name image availability price");</span>
-<span class="cstat-no" title="statement not covered" >        if (!menu) <span class="cstat-no" title="statement not covered" >return res.status(404).json({ error: "Menu introuvable" });</span></span>
+        const menu = await Menu.findById(id).populate("products", "name image availability price");
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!menu) <span class="cstat-no" title="statement not covered" >return res.status(404).json({ error: "Menu introuvable" });</span>
 &nbsp;
-<span class="cstat-no" title="statement not covered" >        res.status(200).json(menu);</span>
+        res.status(200).json(menu);
     } catch (error) {
 <span class="cstat-no" title="statement not covered" >        res.status(500).json({</span>
             error: "Erreur lors de la récupération du menu",
@@ -508,7 +508,7 @@ exports.deleteMenu = async (req, res) =&gt; {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-05-05T11:16:09.969Z
+                at 2026-05-05T12:54:21.106Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

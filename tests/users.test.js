@@ -60,6 +60,35 @@ describe("Users routes", () => {
         expect(res.statusCode).toBe(403);
     });
 
+    it("should get a user by id if requester is admin", async () => {
+        const user = await User.create({
+            name: "test user",
+            email: "test@test.com",
+            password: "Password123",
+            role: "reception",
+        });
+
+        const res = await request(app).get(`/wacdo/users/${user._id}`).set("Authorization", `Bearer ${adminToken}`);
+
+        expect(res.statusCode).toBe(200);
+        expect(res.body.name).toBe("test user");
+        expect(res.body.email).toBe("test@test.com");
+        expect(res.body.password).toBeUndefined();
+    });
+
+    it("should return 403 if non-admin tries to get a user by id", async () => {
+        const user = await User.create({
+            name: "test user",
+            email: "test@test.com",
+            password: "Password123",
+            role: "reception",
+        });
+
+        const res = await request(app).get(`/wacdo/users/${user._id}`).set("Authorization", `Bearer ${receptionToken}`);
+
+        expect(res.statusCode).toBe(403);
+    });
+
     it("should create a user if requester is admin", async () => {
         const res = await request(app).post("/wacdo/users").set("Authorization", `Bearer ${adminToken}`).send({
             name: "picker",

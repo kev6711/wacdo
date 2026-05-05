@@ -55,6 +55,34 @@ describe("Products routes", () => {
         expect(res.statusCode).toBe(401);
     });
 
+    it("should get products if user is reception", async () => {
+        await Product.create({
+            name: "Big Wac",
+            category: "burger",
+            price: 9.99,
+        });
+
+        const res = await request(app).get("/wacdo/products").set("Authorization", `Bearer ${receptionToken}`);
+
+        expect(res.statusCode).toBe(200);
+        expect(res.body).toHaveLength(1);
+    });
+
+    it("should get a product by id", async () => {
+        const product = await Product.create({
+            name: "Big Wac",
+            category: "burger",
+            price: 9.99,
+        });
+
+        const res = await request(app)
+            .get(`/wacdo/products/${product._id}`)
+            .set("Authorization", `Bearer ${adminToken}`);
+
+        expect(res.statusCode).toBe(200);
+        expect(res.body.name).toBe("Big Wac");
+    });
+
     it("should create a product if user is admin", async () => {
         const res = await request(app)
             .post("/wacdo/products")
@@ -69,6 +97,17 @@ describe("Products routes", () => {
         expect(res.body.name).toBe("Big Wac");
         expect(res.body.category).toBe("burger");
         expect(res.body.price).toBe(9.99);
+    });
+
+    it("should return 403 if reception tries to create a product", async () => {
+        const res = await request(app)
+            .post("/wacdo/products")
+            .set("Authorization", `Bearer ${receptionToken}`)
+            .field("name", "Big Wac")
+            .field("category", "burger")
+            .field("price", "9.99");
+
+        expect(res.statusCode).toBe(403);
     });
 
     it("should return 400 if required fields are missing", async () => {
